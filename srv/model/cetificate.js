@@ -3,7 +3,9 @@ const mongoose = require('mongoose');
 
 const Certificate = new mongoose.Schema({
     employeecode: { type: String, required: false },
-    Url:{type: Buffer}
+FileName:{type:String},
+FileData:{type: Buffer},
+UploadDate:{type:String}
 });
 
 
