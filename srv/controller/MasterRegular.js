@@ -4,9 +4,14 @@ const app = express();
 const getMethod =async (req,res)=>{
     try {
         const employeecode = req?.params?.employeecode;
-        const getEmpData = await Regularizations.find({"employeecode":employeecode});
+        var getEmpData;
+        if(employeecode){
+         getEmpData = await Regularizations.find({"employeecode":employeecode});
+        }else{
+            getEmpData = await Regularizations.find();
+        }
         if(getEmpData.length > 0){
-                 res.status(200).json({message:"Success",Results:getEmpData}); 
+                 res.status(200).json({message:"Success",Results:getEmpData,createdBy:"Dev Patel"}); 
         }
        } catch (error) {
          res.status(500).json({ error: "Error Getting employee for Get", error: error.message });
