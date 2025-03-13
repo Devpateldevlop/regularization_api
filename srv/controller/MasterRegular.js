@@ -40,7 +40,14 @@ res.status(201).json({
 const postMethod =async (req,res)=>{
     var data = req?.body;
     try {
-      var created = await Regularizations.create(data);
+        let EmployeeData = await Regularizations.find({employeecode:data.employeecode});
+    if(EmployeeData.length <= 5){
+
+        var created = await Regularizations.create(data);
+    }else{
+        return res.status(404).json({error:"Max 5 limit"})
+    }
+
   res.status(201).json({
            message: "Created",
            createdBy:"Dev Patel",
