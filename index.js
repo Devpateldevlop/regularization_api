@@ -15,6 +15,7 @@ app.use(cors({orgin:'*'}));
 const PORT = process.env.PORT || 5002;
 
 app.get("/api/regularization/:employeecode",getMethod);
+app.get("/api/regularization",getMethod);
 app.post("/api/regularization",postMethod);
 app.put("/api/regularization/:employeecode",putMethod);
 app.delete("/api/regularization/:employeecode",deleteMethod);
