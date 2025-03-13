@@ -14,7 +14,7 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cors({orgin:'*'}));
 const PORT = process.env.PORT || 5002;
 
-app.get("/api/regularization/:id",getMethod);
+app.get("/api/regularization/:employeecode",getMethod);
 app.post("/api/regularization",postMethod);
 app.listen(PORT, () => {
 
