@@ -7,6 +7,9 @@ const getMethod =async (req,res)=>{
         var getEmpData;
         if(employeecode){
          getEmpData = await Regularizations.find({"employeecode":employeecode});
+         if(getEmpData.length === 0){
+             return res.status(404).json({error:"Employee Not Found"});
+         }
         }else{
             getEmpData = await Regularizations.find();
         }
