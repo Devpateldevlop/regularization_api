@@ -31,7 +31,7 @@ res.status(201).json({
         });
    
   } catch (error) {
-    res.status(500).json({ error: "Error Posting Employe for Updated"});
+    res.status(404).json({ error: "Error Posting Employe for Updated"});
   }
     }
 const postMethod =async (req,res)=>{
@@ -40,17 +40,23 @@ const postMethod =async (req,res)=>{
       var created = await Regularizations.create(data);
   res.status(201).json({
            message: "Created",
+           createdBy:"Dev Patel",
            created:created
           });
-     
   
     } catch (error) {
       res.status(404).json({ error: "Error Posting Employee" });
     }
         }
 const deleteMethod =async (req,res)=>{
-            const id = req.params.id
-            res.send("welcome "+id);
+    const employeecode = req?.params?.employeecode;
+    try {
+      const deletedUser = await Regularizations.deleteOne({ employeecode: employeecode });
+      if (deletedUser.deletedCount == 0) throw Error("User not found");
+      res.status(200).json({ message: "Employee deleted successfully", user: deletedUser });
+    } catch (error) {
+      res.status(404).json({ error: "Error deleting Employee"});
+    }
             }
 module.exports={
     getMethod,
