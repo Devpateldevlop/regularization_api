@@ -41,7 +41,14 @@ const postMethod =async (req,res)=>{
     var data = req?.body;
     try {
         let EmployeeData = await Regularizations.find({employeecode:data.employeecode});
-    if(EmployeeData.length <= 5){
+         let LimitData=[];
+        EmployeeData.forEach(ele=>{
+            var  currentDate =new Date().getMonth()
+            if(parseInt(ele.RegularizationDate.split("-")[1]) == parseInt(currentDate)){
+LimitData.push(ele);
+            }
+        })
+    if(LimitData.length <= 5){
 
         var created = await Regularizations.create(data);
     }else{
