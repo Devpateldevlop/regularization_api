@@ -32,7 +32,7 @@ res.status(201).json({
 const postMethod =async (req,res)=>{
     var data = req?.body;
     try {
-      var created = Regularizations.create(data);
+      var created = await Regularizations.create(data);
   res.status(201).json({
            message: "Created",
            created:created
