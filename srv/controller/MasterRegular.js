@@ -17,7 +17,7 @@ const postMethod =async (req,res)=>{
   
   res.status(201).json({
            message: "Created",
-           claims: MainData.Status
+           created:created
           });
      
   
