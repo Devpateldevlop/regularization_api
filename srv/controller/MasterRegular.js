@@ -43,8 +43,8 @@ const postMethod =async (req,res)=>{
         let EmployeeData = await Regularizations.find({employeecode:data.employeecode});
          let LimitData=[];
         EmployeeData.forEach(ele=>{
-            var  currentDate =parseInt(data.RegularizationDate.split("-")[1]);
-            if(parseInt(ele.RegularizationDate.split("-")[1]) == parseInt(currentDate)){
+            var  currentDate =data.RegularizationDate.split("-");
+            if(parseInt(ele.RegularizationDate.split("-")[1]) == parseInt(currentDate[1]) && parseInt(ele.RegularizationDate.split("-")[0]) == parseInt(currentDate[0]) ){
 LimitData.push(ele);
             }
         })
