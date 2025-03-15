@@ -20,10 +20,7 @@ const getMethod =async (req,res)=>{
          res.status(500).json({ error: "Error Getting employee for Get", error: error.message });
        }
      };
-     
-
 const putMethod =async (req,res)=>{
-   
   try {
     const employeecode = req?.params?.employeecode;
     const data = req?.body;
@@ -44,8 +41,8 @@ const postMethod =async (req,res)=>{
          let LimitData=[];
         EmployeeData.forEach(ele=>{
             var  currentDate =data.RegularizationDate.split("-");
-            if(parseInt(ele.RegularizationDate.split("-")[1]) == parseInt(currentDate[1]) && parseInt(ele.RegularizationDate.split("-")[0]) == parseInt(currentDate[0]) ){
-LimitData.push(ele);
+            if (parseInt(ele.RegularizationDate.split("-")[1]) == parseInt(currentDate[1]) && parseInt(ele.RegularizationDate.split("-")[0]) == parseInt(currentDate[0]) ){
+                  LimitData.push(ele);
             }
         })
     if(LimitData.length <= 5){

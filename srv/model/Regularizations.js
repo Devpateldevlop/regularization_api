@@ -1,6 +1,5 @@
 const mongoose = require('mongoose');
 
-
 const Regularization = new mongoose.Schema({
    
     RegularizationType: { type: String, required: false },
@@ -12,8 +11,6 @@ const Regularization = new mongoose.Schema({
     RegularizationStatus:{type:String}
 
 });
-
-
 
 const Regularizations= mongoose.model('Regularization',Regularization );
 module.exports = Regularizations;

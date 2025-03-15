@@ -1,16 +1,14 @@
 
 ###
-post  http://localhost:4300/api/regularization
+post  http://localhost:4300/api/cetificate
 Content-Type: application/json
 
 {
    
-    "RegularizationType": "miss punch in ",
-    "RegularizationDate": "22-02-2020",
-    "RegularizationPunchInTime": "11:11:11",
+    
     "employeecode": "121",
-    "RegularizationPunchOutTime":"11:11:11",
-    "Reason":"test",
-    "RegularizationStatus":"Pending"
+"FileName":"certificate.jpg",
+"FileData":"iVBORw0KGgoAAAANSUhE",
+"UploadDate":"sdfs"
  
 }
