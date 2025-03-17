@@ -1,5 +1,10 @@
 const express = require('express');
 const mongoose = require('mongoose');
+var bodyParser = require('body-parser');
+var imgSchema = require('./srv/model/Image');
+var fs = require('fs');
+var path = require('path');
+var multer = require('multer');
 const cors = require('cors');
 require("dotenv").config();
 const { getMethod, postMethod, putMethod, deleteMethod } = require('./srv/controller/MasterRegular');
@@ -28,6 +33,50 @@ app.get("/api/cetificate",getMethodCertificate);
 app.post("/api/cetificate",postMethodCertificate);
 app.put("/api/cetificate/:employeecode",putMethodCertificate);
 app.delete("/api/cetificate/:employeecode",deleteMethodCertificate);
+
+
+
+var storage = multer.diskStorage({
+    destination: (req, file, cb) => {
+        cb(null, 'uploads')
+    },
+    filename: (req, file, cb) => {
+        cb(null, file.fieldname + '-' + Date.now())
+    }
+});
+
+var upload = multer({ storage: storage });
+
+app.get('/images', (req, res) => {
+    imgSchema.find()
+    .then((data, err)=>{
+        if(err){
+            console.log(err);
+        }
+        res.send({"items": data})
+    })
+});
+app.post('/images', upload.single('image'), (req, res, next) => {
+
+    var obj = {
+        name: req.body.name,
+        desc: req.body.desc,
+        img: {
+            data: fs.readFileSync(path.join(__dirname + '/uploads/' + req.file.filename)),
+            contentType: 'image/png'
+        }
+    }
+    imgSchema.create(obj)
+    .then ((err, item) => {
+        if (err) {
+            console.log(err);
+        }
+        else {
+            // item.save();
+            res.redirect('/');
+        }
+    });
+});
 
 
 app.listen(PORT, () => {
