@@ -19,7 +19,14 @@ mongoose.connect('mongodb+srv://pdev5771:rxHFzG2xPEkkocvM@cluster0.bso1d.mongodb
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
-app.use(cors({orgin:'*'}));
+// app.use(cors({orgin:'*'}));
+const corsOptions = {
+    origin: '*', // Allow only this domain
+    methods: 'GET,POST', // Allow only specific HTTP methods
+   
+};
+
+app.use(cors(corsOptions));
 const PORT = process.env.PORT || 5002;
 
 app.get("/api/regularization/:employeecode",getMethod);
