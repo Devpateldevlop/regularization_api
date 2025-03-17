@@ -4,8 +4,6 @@ var bodyParser = require('body-parser');
 var imgSchema = require('./srv/model/Image');
 var fs = require('fs');
 var path = require('path');
-
-
 var multer = require('multer');
 const cors = require('cors');
 require("dotenv").config();
@@ -55,7 +53,7 @@ app.get('/images', (req, res) => {
         if(err){
             console.log(err);
         }
-        res.send('imagepage',{items: data})
+        res.send({"items": data})
     })
 });
 app.post('/images', upload.single('image'), (req, res, next) => {
