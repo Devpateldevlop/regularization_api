@@ -13,7 +13,7 @@ const getMethod =async (req,res)=>{
         }else{
             getEmpData = await Regularizations.find();
         }
-        if(getEmpData.length > 0){
+        if(getEmpData.length >= 0){
                  res.status(200).json({message:"Success",Results:getEmpData,createdBy:"Dev Patel"}); 
         }
        } catch (error) {
