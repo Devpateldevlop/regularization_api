@@ -66,6 +66,7 @@ app.post('/images', upload.single('image'), (req, res, next) => {
             contentType: 'image/png'
         }
     }
+    console.log(obj);
     imgSchema.create(obj)
     .then ((err, item) => {
         if (err) {
