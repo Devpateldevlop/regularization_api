@@ -16,17 +16,17 @@ mongoose.connect('mongodb+srv://pdev5771:rxHFzG2xPEkkocvM@cluster0.bso1d.mongodb
     })
     .catch((err) => console.log('MongoDB connection error: ' + err));
    
-
+    app.use(cors({
+        origin: '*', 
+        methods: ['GET', 'POST', 'PUT', 'DELETE' ,'OPTIONS'], 
+        allowedHeaders: ['Content-Type'], 
+    }));
+    
+    app.options('*', cors()); 
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 // app.use(cors({orgin:'*'}));
-app.use(cors({
-    origin: '*', 
-    methods: ['GET', 'POST', 'PUT', 'DELETE' ,'OPTIONS'], 
-    allowedHeaders: ['Content-Type'], 
-}));
 
-app.options('*', cors()); 
 const PORT = process.env.PORT || 5002;
 
 app.get("/api/regularization/:employeecode",getMethod);
