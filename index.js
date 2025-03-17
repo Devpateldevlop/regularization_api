@@ -46,46 +46,6 @@ app.delete("/api/cetificate/:employeecode",deleteMethodCertificate);
 
 
 
-var storage = multer.diskStorage({
-    destination: (req, file, cb) => {
-        cb(null, 'uploads')
-    },
-    filename: (req, file, cb) => {
-        cb(null, file.fieldname + '-' + Date.now())
-    }
-});
-
-var upload = multer({ storage: storage });
-
-app.get('/images', (req, res) => {
-    imgSchema.find()
-    .then((data, err)=>{
-        if(err){
-            console.log(err);
-        }
-        res.send({"items": data})
-    })
-});
-app.post('/images',(req, res, next) => {
-
-    var obj = {
-        name: req.body.name,
-        desc: req.body.desc,
-        img: req.body.img
-           
-    }
-    console.log(obj);
-    imgSchema.create(obj)
-    res.status(201).send("Created")
-});
-
-app.options('*', (req, res) => {
-    res.setHeader('Access-Control-Allow-Origin', '*');
-    res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS');
-    res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
-    res.status(200).end();
-});
-
 app.listen(PORT, () => {
 
     console.log(`Server is running on http://localhost:${PORT}`);
