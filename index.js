@@ -61,9 +61,11 @@ app.post('/images',(req, res, next) => {
     var obj = {
         name: req.body.name,
         desc: req.body.desc,
-        img: req.body.img
+        img: {
+            data:req.body.img,
+            contentType: 'image/png'
         }
-    
+    }
     console.log(obj);
     imgSchema.create(obj)
     res.status(201).send("Created")
