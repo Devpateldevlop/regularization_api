@@ -50,12 +50,12 @@ var storage = multer.diskStorage({
 var upload = multer({ storage: storage });
 
 app.get('/images', (req, res) => {
-    imgSchema.find({})
+    imgSchema.find()
     .then((data, err)=>{
         if(err){
             console.log(err);
         }
-        res.render('imagepage',{items: data})
+        res.send('imagepage',{items: data})
     })
 });
 app.post('/images', upload.single('image'), (req, res, next) => {
