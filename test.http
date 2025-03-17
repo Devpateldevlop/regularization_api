@@ -1,14 +1,10 @@
 
 ###
-post  http://localhost:4300/api/cetificate
+post  http://localhost:4301/images
 Content-Type: application/json
 
 {
-   
-    
-    "employeecode": "121",
-"FileName":"certificate.jpg",
-"FileData":"iVBORw0KGgoAAAANSUhE",
-"UploadDate":"sdfs"
- 
-}
+        "name": "oNameInput",
+         "desc": "oDescInput",
+         "img": "base64Image" 
+        }

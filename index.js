@@ -20,8 +20,6 @@ mongoose.connect('mongodb+srv://pdev5771:rxHFzG2xPEkkocvM@cluster0.bso1d.mongodb
    
 
 app.use(express.json());
-app.use(bodyParser.urlencoded({ extended: false }))
-app.use(bodyParser.json())
 app.use(express.urlencoded({ extended: false }));
 app.use(cors({orgin:'*'}));
 const PORT = process.env.PORT || 5002;
