@@ -56,16 +56,14 @@ app.get('/images', (req, res) => {
         res.send({"items": data})
     })
 });
-app.post('/images', upload.single('image'), (req, res, next) => {
+app.post('/images',(req, res, next) => {
 
     var obj = {
         name: req.body.name,
         desc: req.body.desc,
-        img: {
-            data: fs.readFileSync(path.join(__dirname + '/uploads/' + req.file.filename)),
-            contentType: 'image/png'
+        img: req.body.img
         }
-    }
+    
     console.log(obj);
     imgSchema.create(obj)
     .then ((err, item) => {
