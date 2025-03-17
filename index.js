@@ -67,7 +67,7 @@ app.post('/images',(req, res, next) => {
         }
     }
     console.log(obj);
-    imgSchema.create(obj)
+    imgSchema.insertOne(req.body)
     res.status(201).send("Created")
 });
 
