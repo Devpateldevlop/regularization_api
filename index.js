@@ -66,15 +66,7 @@ app.post('/images',(req, res, next) => {
     
     console.log(obj);
     imgSchema.create(obj)
-    .then ((err, item) => {
-        if (err) {
-            console.log(err);
-        }
-        else {
-            // item.save();
-            res.redirect('/');
-        }
-    });
+    res.status(201).send("Created")
 });
 
 
