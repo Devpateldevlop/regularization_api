@@ -54,9 +54,9 @@ const postMethodCertificate =async (req,res)=>{
     }
         }
 const deleteMethodCertificate =async (req,res)=>{
-    const employeecode = req?.params?.employeecode;
+    const id = req?.params?.employeecode;
     try {
-      const deletedUser = await Certificates.deleteOne({ employeecode: employeecode });
+      const deletedUser = await Certificates.deleteOne({ _id: id });
       if (deletedUser.deletedCount == 0) throw Error("User not found");
       res.status(200).json({ message: "Employee deleted successfully", user: deletedUser });
     } catch (error) {
