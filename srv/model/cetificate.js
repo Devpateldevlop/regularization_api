@@ -5,7 +5,8 @@ const Certificate = new mongoose.Schema({
     FileName: { type: String },
     FileData: { type: String },
     UploadDate: { type: String },
-    FileType:{type :String}
+    FileType:{type :String},
+    Favourite:{type:Boolean, default:false}
 });
 
 const Certificates = mongoose.model('Certificate', Certificate);
