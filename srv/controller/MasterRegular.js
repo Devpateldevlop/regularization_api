@@ -31,7 +31,7 @@ res.status(201).json({
         });
    
   } catch (error) {
-    res.status(404).json({ error: "Error Posting Employe for Updated"});
+    res.status(404).json({ error: "Error Posting  for Updated"});
   }
     }
 const postMethod =async (req,res)=>{
