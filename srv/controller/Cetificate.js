@@ -27,7 +27,7 @@ const putMethodCertificate =async (req,res)=>{
   try {
     const employeecode = req?.params?.employeecode;
     const data = req?.body;
- const updatedEmp = await Certificates.findOneAndUpdate({ employeecode: employeecode }, data, { new: true });
+ const updatedEmp = await Certificates.findOneAndUpdate({ employeecode: employeecode,_id:data._id }, data, { new: true });
 res.status(201).json({
          message: "Updated",
          Emp: updatedEmp
