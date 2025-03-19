@@ -12,16 +12,16 @@ const EmailPost =async (req, res) => {
             port: 465,
             secure: true,
             auth: {
-                user: 'devpatel190703@gmail.com',
-                pass: 'kxcszpwbopestogz',
+                user: 'contact.hrmate@gmail.com',
+                pass: 'soecotvgcoexebyi',
             },
         });
        
         var AdminEmail = EmailNotificationTo.replace("|",",");
         const info = await transporter.sendMail({
-            from: `"HRMate" <devpatel190703@gmail.com>`,
+            from: `${firstName} ${lastName} <contact.hrmate@gmail.com>`,
             to: AdminEmail,
-            subject: "🔔 New Leave Request Submitted",
+            subject: "🔔 New Leave Request !",
             html: `
           <div style="font-family: Arial, sans-serif; max-width: 600px; margin: auto; border-radius: 8px; padding: 20px; background-color: #ffffff; border: 1px solid #ddd;">
          <h2 style="color: #1E3A8A; text-align: center;">🚀 New Leave Request</h2> <p style="font-size: 14px; color: #333;">Dear Admin,</p>
