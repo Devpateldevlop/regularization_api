@@ -5,6 +5,7 @@ const Certificate = new mongoose.Schema({
     FileName: { type: String },
     FileData: { type: String },
     UploadDate: { type: String },
+    UrlName:{type:String},
     FileType:{type :String},
     Favourite:{type:Boolean, default:false}
 });
