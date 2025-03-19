@@ -43,10 +43,12 @@ const postMethodCertificate =async (req,res)=>{
     var data = req?.body;
     try {
         var created = await Certificates.create(data);
+        const  getEmpData = await Certificates.find({"employeecode":data.employeecode});
   res.status(201).json({
            message: "Created",
            createdBy:"Dev Patel",
-           created:created
+           created:created,
+           Results:getEmpData
           });
   
     } catch (error) {
