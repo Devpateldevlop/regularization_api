@@ -27,7 +27,7 @@ mongoose.connect('mongodb+srv://pdev5771:rxHFzG2xPEkkocvM@cluster0.bso1d.mongodb
 
 app.use(express.json({ limit: '10mb' }));
 app.use(express.urlencoded({ limit: '10mb', extended: true }));
-app.use(express.urlencoded({ extended: false }));
+
 // app.use(cors({orgin:'*'}));
 
 const PORT = process.env.PORT || 5002;
