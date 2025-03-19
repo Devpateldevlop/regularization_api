@@ -1,8 +1,8 @@
 ###
-get http://localhost:4304/api/cetificate
+get http://localhost:4300/api/cetificate
 
 ###
-put http://localhost:4304/api/cetificate/121
+delete http://localhost:4300/api/cetificate/67d916e905501ec20aa22d94|162
 Content-Type: application/json
 
 {
