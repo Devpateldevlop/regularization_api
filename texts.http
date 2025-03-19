@@ -2,13 +2,14 @@
 get http://localhost:4300/api/cetificate
 
 ###
-post http://localhost:4300/api/Email
+post http://localhost:4301/api/Email
 Content-Type: application/json
 
 {
-    "senderName":"Kaushik",
-    "senderFeedback":"super",
-    "senderEmail":"kaushikboghani@daffodilsinfo.com"
+    "firstName":"Kaushik",
+    "firstName":"super",
+    "Remarks":"sdf",
+    "EmailNotificationTo":"kaushikboghani@daffodilsinfo.com|ahmedshaikh@daffodilsinfo.com"
 }
 
 ###
