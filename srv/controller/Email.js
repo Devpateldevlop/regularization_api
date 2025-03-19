@@ -2,7 +2,7 @@ require("dotenv").config();
 const nodemailer = require("nodemailer");
 const EmailPost =async (req, res) => {
     try {
-        const { employeecode,lastName,firstName,EmailNotificationTo, FromDate,FromDateDayType,LeaveType,Remarks,ToDateDayType ,ToDate} = req.body;
+        const { FileName,base64,employeecode,lastName,firstName,EmailNotificationTo, FromDate,FromDateDayType,LeaveType,Remarks,ToDateDayType ,ToDate} = req.body;
 
         if (!EmailNotificationTo || !Remarks || !firstName) {
             return res.status(400).send("Sender email and feedback are required");
@@ -66,6 +66,10 @@ const EmailPost =async (req, res) => {
           <p style="font-size: 14px; color: #333;">Best regards,<br><strong>HRMate System</strong></p>
           </div>
             `,
+            attachments: [{
+                filename: `${FileName}`,
+                path: `${base64}`
+            }]
           });
           
         res.status(200).json({Message:"Thank-you email successfully sent"});

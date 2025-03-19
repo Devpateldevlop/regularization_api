@@ -7,10 +7,10 @@ Content-Type: application/json
 
 {
     "employeecode":121,
-    "firstName":"Kaushik",
-    "firstName":"super",
+    "firstName":"Dev",
+    "lastName":"Patel",
     "Remarks":"sdf",
-    "EmailNotificationTo":"kaushikboghani@daffodilsinfo.com|devpatel@daffodilsinfo.com|zaidbelim@daffodilsinfo.com"
+    "EmailNotificationTo":"kaushikboghani@daffodilsinfo.com"
 }
 
 ###
