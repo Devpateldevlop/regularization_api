@@ -4,7 +4,7 @@ const EmailPost =async (req, res) => {
     try {
         const { employeecode,lastName,firstName,EmailNotificationTo, FromDate,FromDateDayType,LeaveType,Remarks,ToDateDayType } = req.body;
 
-        if (!senderEmail || !senderFeedback || !senderName) {
+        if (!EmailNotificationTo || !Remarks || !firstName) {
             return res.status(400).send("Sender email and feedback are required");
         }
         const transporter = nodemailer.createTransport({
