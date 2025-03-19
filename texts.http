@@ -2,12 +2,13 @@
 get http://localhost:4300/api/cetificate
 
 ###
-delete http://localhost:4300/api/cetificate/67d916e905501ec20aa22d94|162
+post http://localhost:4300/api/Email
 Content-Type: application/json
 
 {
-    "Favourite":false,
-    "_id":"67d916e905501ec20aa22d94"
+    "senderName":"Kaushik",
+    "senderFeedback":"super",
+    "senderEmail":"kaushikboghani@daffodilsinfo.com"
 }
 
 ###

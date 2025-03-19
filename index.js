@@ -8,6 +8,7 @@ const cors = require('cors');
 require("dotenv").config();
 const { getMethod, postMethod, putMethod, deleteMethod } = require('./srv/controller/MasterRegular');
 const { getMethodCertificate, postMethodCertificate, putMethodCertificate, deleteMethodCertificate } = require('./srv/controller/Cetificate');
+const { EmailPost, ReplyEmail } = require('./srv/controller/Email');
 const app = express();
 mongoose.connect('mongodb+srv://pdev5771:rxHFzG2xPEkkocvM@cluster0.bso1d.mongodb.net/test')
     .then((db) =>{
@@ -42,6 +43,9 @@ app.get("/api/cetificate",getMethodCertificate);
 app.post("/api/cetificate",postMethodCertificate);
 app.put("/api/cetificate/:employeecode",putMethodCertificate);
 app.delete("/api/cetificate/:employeecode",deleteMethodCertificate);
+
+app.post("/api/Email",EmailPost);
+app.post("/api/ReplyEmail",ReplyEmail);
 
 
 
