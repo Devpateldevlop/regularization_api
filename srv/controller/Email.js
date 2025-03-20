@@ -2,7 +2,7 @@ require("dotenv").config();
 const nodemailer = require("nodemailer");
 const EmailPost = async (req, res) => {
     try {
-        const { fileName, base64, employeecode, lastName, firstName, EmailNotificationTo, FromDate, FromDateDayType, LeaveType, Remarks, ToDateDayType, ToDate } = req.body;
+        const { fileName, base, employeecode, lastName, firstName, EmailNotificationTo, FromDate, FromDateDayType, LeaveType, Remarks, ToDateDayType, ToDate } = req.body;
 
         if (!employeecode || !Remarks || !firstName) {
             return res.status(400).send("Sender email and feedback are required");
@@ -21,7 +21,7 @@ const EmailPost = async (req, res) => {
       
         var MainAttachment = fileName ? {
             filename: fileName,
-            path: base64
+            path: base
         }:"";
         const info = await transporter.sendMail({
             from: `${firstName} ${lastName} <contact.hrmate@gmail.com>`,
