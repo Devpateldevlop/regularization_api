@@ -2,7 +2,7 @@
 get http://localhost:4308/api/cetificate
 
 ###
-post http://localhost:4300/api/Email
+post http://localhost:4302/api/Email
 Content-Type: application/json
 
 {
@@ -14,7 +14,7 @@ Content-Type: application/json
 }
 
 ###
-post http://localhost:4300/api/cetificate
+post http://localhost:4302/api/cetificate
 Content-Type: application/json
 
 {

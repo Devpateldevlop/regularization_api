@@ -66,12 +66,12 @@ const EmailPost = async (req, res) => {
           <td style="padding: 10px; border: 1px solid #333;">${Remarks || "N/A"}</td>
           </tr>
           </table>
-           
+        
               <p style="margin-top: 20px; font-size: 14px; color: #333;">Please review and take the necessary action.</p>
           <p style="font-size: 14px; color: #333;">Best regards,<br><strong>HRMate System</strong></p>
           </div>
             `,
-            attachments: MainAttachment =='' ? undefined :[MainAttachment]  
+            attachments: MainAttachment == '' ? undefined :[MainAttachment]  
         });
 
         res.status(200).json({ Message: "Thank-you email successfully sent" });
