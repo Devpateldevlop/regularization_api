@@ -32,6 +32,9 @@ app.use(express.urlencoded({ limit: '10mb', extended: true }));
 
 const PORT = process.env.PORT || 5002;
 
+app.post("/api/Email",EmailPost);
+app.post("/api/ReplyEmail",ReplyEmail);
+
 app.get("/api/regularization/:employeecode",getMethod);
 app.get("/api/regularization",getMethod);
 app.post("/api/regularization",postMethod);
@@ -44,8 +47,7 @@ app.post("/api/cetificate",postMethodCertificate);
 app.put("/api/cetificate/:employeecode",putMethodCertificate);
 app.delete("/api/cetificate/:employeecode",deleteMethodCertificate);
 
-app.post("/api/Email",EmailPost);
-app.post("/api/ReplyEmail",ReplyEmail);
+
 
 
 
