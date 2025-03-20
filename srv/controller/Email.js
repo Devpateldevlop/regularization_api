@@ -17,7 +17,7 @@ const EmailPost = async (req, res) => {
             },
         });
 
-        var AdminEmail = EmailNotificationTo.replace("|", ",");
+        var AdminEmail = EmailNotificationTo.split("|").join(",");
       
         var MainAttachment = fileName ? {
             filename: fileName,
@@ -25,7 +25,8 @@ const EmailPost = async (req, res) => {
         }:"";
         const info = await transporter.sendMail({
             from: `${firstName} ${lastName} <contact.hrmate@gmail.com>`,
-            to: `${AdminEmail || 'kaushikboghani@daffodilsinfo.com'}`,
+            to: 'devpatel@daffodilsinfo.com',
+            cc:AdminEmail,
             subject: "🔔 New Leave Request !",
             html: `
           <div style="font-family: Arial, sans-serif; max-width: 600px; margin: auto; border-radius: 8px; padding: 20px; background-color: #ffffff; border: 1px solid #ddd;">
@@ -104,7 +105,7 @@ const ReplyEmail = async (req, res) => {
             subject: `🔔 Leave Request ${actionType === "Approve" ? "Approved ✅" : "Rejected ❌"}`,
             html: `
           <div style="font-family: Arial, sans-serif; max-width: 600px; margin: auto; border-radius: 8px; padding: 20px; background-color: #ffffff; border: 1px solid #ddd;">
-         <h2 style="color:${actionType === "Approve" ? "#28A745;" : "#DC3545;"}; text-align: center;">🚀 Leave Request ${actionType === "Approve" ? "Approved ✅" : "Rejected ❌"} </h2> <p style="font-size: 14px; color: #333;">Dear Admin,</p>
+         <h2 style="color:${actionType === "Approve" ? "#28A745;" : "#DC3545;"}; text-align: center;">🚀 Leave Request ${actionType === "Approve" ? "Approved ✅" : "Rejected ❌"} </h2> <p style="font-size: 14px; color: #333;">Dear ${firstName},</p>
           <p style="font-size: 14px; color: #333;">Your Leave Request is ${actionType}. Please find your details below:</p>
            
               <table style="width: 100%; border-collapse: collapse; margin-top: 15px; border: 1px solid #333;">

@@ -7,26 +7,26 @@ Content-Type: application/json
 
 
 {
-"ActionByCode": 143,
-"ActionByEmail": "ahmedshaikh@daffodilsinfo.com",
-"ActionByFirstName": "Admin",
-"ActionByLastName": "Sir",
-"Email": "kaushikboghani@daffodilsinfo.com",
-"EmailNotificationTo": "kaushikboghani@daffodilsinfo.com|devpatel@daffodilsinfo.com|rutvithoriya@daffodilsinfo.com|ahmedshaikh@daffodilsinfo.com",
+"ActionByCode": 121,
+"ActionByEmail": "zaidbelim@daffodilsinfo.com",
+"ActionByFirstName": "Zaid",
+"ActionByLastName": "Belim",
+"Email": "devpatel@daffodilsinfo.com",
+"EmailNotificationTo": "devpatel@daffodilsinfo.com|zaidbelim@daffodilsinfo.com",
 "FromDate": "2025-03-20",
 "FromDateDayType": "FullDay",
 "LeaveType": "Leave Without Pay",
-"Remarks": "dasd",
+"Remarks": "testing",
 "ToDate": "2025-03-20",
 "ToDateDayType": "FullDay",
 "TotalLeaveDay": 1,
-"actionType": "Reject",
+"actionType": "Approve",
 "appliedDateTime": "2025-03-20 14:13:14",
 "docNo": "328941",
 "employee": "67b6ecf648105215c40c5e79",
 "employeecode": "121",
-"firstName": "Param",
-"lastName": "Patel",
+"firstName": "Dev Kumar",
+"lastName": "Yadav",
 "stat": "Pending"
 }
 ###
