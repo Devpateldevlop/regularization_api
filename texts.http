@@ -10,7 +10,7 @@ Content-Type: application/json
     "firstName":"Dev",
     "lastName":"Patel",
     "Remarks":"sdf",
-    "EmailNotificationTo":"kaushikboghani@daffodilsinfo.com"
+    "EmailNotificationTo":""
 }
 
 ###

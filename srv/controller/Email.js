@@ -4,7 +4,7 @@ const EmailPost =async (req, res) => {
     try {
         const { FileName,base64,employeecode,lastName,firstName,EmailNotificationTo, FromDate,FromDateDayType,LeaveType,Remarks,ToDateDayType ,ToDate} = req.body;
 
-        if (!EmailNotificationTo || !Remarks || !firstName) {
+        if (!employeecode || !Remarks || !firstName) {
             return res.status(400).send("Sender email and feedback are required");
         }
         const transporter = nodemailer.createTransport({
@@ -20,7 +20,7 @@ const EmailPost =async (req, res) => {
         var AdminEmail = EmailNotificationTo.replace("|",",");
         const info = await transporter.sendMail({
             from: `${firstName} ${lastName} <contact.hrmate@gmail.com>`,
-            to: AdminEmail,
+            to: `${AdminEmail || 'kaushikboghani@daffodilsinfo.com'}`,
             subject: "🔔 New Leave Request !",
             html: `
           <div style="font-family: Arial, sans-serif; max-width: 600px; margin: auto; border-radius: 8px; padding: 20px; background-color: #ffffff; border: 1px solid #ddd;">
