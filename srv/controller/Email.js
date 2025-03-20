@@ -1,8 +1,8 @@
 require("dotenv").config();
 const nodemailer = require("nodemailer");
-const EmailPost =async (req, res) => {
+const EmailPost = async (req, res) => {
     try {
-        const { FileName,base64,employeecode,lastName,firstName,EmailNotificationTo, FromDate,FromDateDayType,LeaveType,Remarks,ToDateDayType ,ToDate} = req.body;
+        const { FileName, base64, employeecode, lastName, firstName, EmailNotificationTo, FromDate, FromDateDayType, LeaveType, Remarks, ToDateDayType, ToDate } = req.body;
 
         if (!employeecode || !Remarks || !firstName) {
             return res.status(400).send("Sender email and feedback are required");
@@ -16,8 +16,13 @@ const EmailPost =async (req, res) => {
                 pass: 'soecotvgcoexebyi',
             },
         });
-       
-        var AdminEmail = EmailNotificationTo.replace("|",",");
+
+        var AdminEmail = EmailNotificationTo.replace("|", ",");
+      
+        var MainAttachment = FileName ? {
+            filename: FileName,
+            path: base64
+        }:"";
         const info = await transporter.sendMail({
             from: `${firstName} ${lastName} <contact.hrmate@gmail.com>`,
             to: `${AdminEmail || 'kaushikboghani@daffodilsinfo.com'}`,
@@ -66,34 +71,31 @@ const EmailPost =async (req, res) => {
           <p style="font-size: 14px; color: #333;">Best regards,<br><strong>HRMate System</strong></p>
           </div>
             `,
-            attachments: [{
-                filename: `${FileName}`,
-                path: `${base64}`
-            }]
-          });
-          
-        res.status(200).json({Message:"Thank-you email successfully sent"});
+            attachments: MainAttachment =='' ? undefined :[MainAttachment]  
+        });
+
+        res.status(200).json({ Message: "Thank-you email successfully sent" });
     } catch (error) {
-        res.status(500).send("Failed to send thank-you email",error);
+        res.status(500).send("Failed to send thank-you email", error);
     }
 };
-const ReplyEmail=async (req,res)=>{
-    try{
-    const transporter = nodemailer.createTransport({
-        service: "gmail",
-        port: 465,
-        secure: true,
-        auth: {
-            user: 'devpatel190703@gmail.com',
-            pass: 'kxcszpwbopestogz',
-        },
-    });
-    const infos = await transporter.sendMail({
-        from: `"HRMate" <devpatel190703@gmail.com>`,
-        to: "devpatel190703@gmail.com",
-        subject: `Feedback by ${senderName}`,
-        text: `Dear HRMate Support,\n Date:${date}\n Name: ${senderName}\n Email:${senderEmail}\n Message:${senderFeedback}\n\nBest regards,\nAhmed Shaikh`
-        ,   html: `
+const ReplyEmail = async (req, res) => {
+    try {
+        const transporter = nodemailer.createTransport({
+            service: "gmail",
+            port: 465,
+            secure: true,
+            auth: {
+                user: 'devpatel190703@gmail.com',
+                pass: 'kxcszpwbopestogz',
+            },
+        });
+        const infos = await transporter.sendMail({
+            from: `"HRMate" <devpatel190703@gmail.com>`,
+            to: "devpatel190703@gmail.com",
+            subject: `Feedback by ${senderName}`,
+            text: `Dear HRMate Support,\n Date:${date}\n Name: ${senderName}\n Email:${senderEmail}\n Message:${senderFeedback}\n\nBest regards,\nAhmed Shaikh`
+            , html: `
             <p>Dear User Sir,</p>
             <p style='background-color:red'>Date :${formattedDate}</p>
             <p>Name :${senderName}</p>
@@ -101,13 +103,13 @@ const ReplyEmail=async (req,res)=>{
             <p>Message :${senderFeedback}</p><br>
             <p>Best regards,<br>Ahmed Shaikh</p>
         `,
-    });
-    res.status(200).json({Message:"Thank-you email successfully sent"});
-} catch (error) {
-    res.status(500).send("Failed to send thank-you email",error);
+        });
+        res.status(200).json({ Message: "Thank-you email successfully sent" });
+    } catch (error) {
+        res.status(500).send("Failed to send thank-you email", error);
+    }
 }
-}
-module.exports={
+module.exports = {
     EmailPost,
     ReplyEmail
 }

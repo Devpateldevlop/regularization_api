@@ -1,8 +1,8 @@
 ###
-get http://localhost:4300/api/cetificate
+get http://localhost:4308/api/cetificate
 
 ###
-post http://localhost:4300/api/Email
+post http://localhost:4308/api/Email
 Content-Type: application/json
 
 {
@@ -10,6 +10,7 @@ Content-Type: application/json
     "firstName":"Dev",
     "lastName":"Patel",
     "Remarks":"sdf",
+    "FileName":"text.txt",
     "EmailNotificationTo":""
 }
 

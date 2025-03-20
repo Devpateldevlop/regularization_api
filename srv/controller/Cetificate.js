@@ -66,7 +66,8 @@ const deleteMethodCertificate =async (req,res)=>{
     } catch (error) {
       res.status(404).json({ error: "Error deleting Employee"});
     }
-            }
+    
+  }
 module.exports={
     getMethodCertificate ,
     putMethodCertificate ,
