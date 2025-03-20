@@ -18,17 +18,12 @@ mongoose.connect('mongodb+srv://pdev5771:rxHFzG2xPEkkocvM@cluster0.bso1d.mongodb
    
     app.use(cors({
         origin: '*', 
-        methods: ['GET', 'POST', 'PUT', 'DELETE' ,'OPTIONS'], 
-        allowedHeaders: ['Content-Type'], 
     }));
     
-    app.options('*', cors()); 
-    
+app.use(express.json({ limit: '45mb' }));
+app.use(express.urlencoded({ limit: '45mb', extended: true }));
 
-app.use(express.json({ limit: '10mb' }));
-app.use(express.urlencoded({ limit: '10mb', extended: true }));
-
-// app.use(cors({orgin:'*'}));
+app.use(cors({orgin:'*'}));
 
 const PORT = process.env.PORT || 5002;
 
@@ -46,9 +41,6 @@ app.get("/api/cetificate",getMethodCertificate);
 app.post("/api/cetificate",postMethodCertificate);
 app.put("/api/cetificate/:employeecode",putMethodCertificate);
 app.delete("/api/cetificate/:employeecode",deleteMethodCertificate);
-
-
-
 
 
 app.listen(PORT, () => {
