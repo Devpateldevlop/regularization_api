@@ -2,7 +2,7 @@
 get http://localhost:4300/api/cetificate
 
 ###
-post http://localhost:4303/api/Email
+post http://localhost:4300/api/Email
 Content-Type: application/json
 
 {

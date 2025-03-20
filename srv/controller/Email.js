@@ -67,8 +67,8 @@ const EmailPost =async (req, res) => {
           </div>
             `,
             attachments: [{
-                filename: `${FileName}`,
-                path: `${base64}`
+                filename: `${FileName || 'NA'}`,
+                path: `${base64 || 'data:image/jpeg;base64,/9j/4QF4RXhpZgAATU0AK'}`
             }]
           });
           
