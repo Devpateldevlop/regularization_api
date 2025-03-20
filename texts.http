@@ -12,7 +12,7 @@ Content-Type: application/json
 "ActionByFirstName": "Admin",
 "ActionByLastName": "Sir",
 "Email": "kaushikboghani@daffodilsinfo.com",
-"EmailNotificationTo": "kaushikboghani@daffodilsinfo.com|devpatel@daffodilsinfo.com",
+"EmailNotificationTo": "kaushikboghani@daffodilsinfo.com|devpatel@daffodilsinfo.com|rutvithoriya@daffodilsinfo.com|ahmedshaikh@daffodilsinfo.com",
 "FromDate": "2025-03-20",
 "FromDateDayType": "FullDay",
 "LeaveType": "Leave Without Pay",

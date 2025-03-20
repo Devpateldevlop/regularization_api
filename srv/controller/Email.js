@@ -86,7 +86,7 @@ const EmailPost = async (req, res) => {
 const ReplyEmail = async (req, res) => {
     try {
         const { employeecode,ActionByEmail,docNo,actionType,Email,ActionByFirstName ,ActionByLastName,lastName,EmailNotificationTo, firstName, FromDate, FromDateDayType, LeaveType, Remarks, ToDateDayType, ToDate } = req.body;
-        var AdminEmail = EmailNotificationTo.replace("|", ",");
+        var AdminEmail = EmailNotificationTo.split("|").join(",");
       
         const transporter = nodemailer.createTransport({
             service: "gmail",
