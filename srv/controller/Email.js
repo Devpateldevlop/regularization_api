@@ -2,7 +2,7 @@ require("dotenv").config();
 const nodemailer = require("nodemailer");
 const EmailPost = async (req, res) => {
     try {
-        const { fileName, base, employeecode, lastName, firstName, EmailNotificationTo, FromDate, FromDateDayType, LeaveType, Remarks, ToDateDayType, ToDate } = req.body;
+        const { fileName, base,docNo, employeecode, lastName, firstName, EmailNotificationTo, FromDate, FromDateDayType, LeaveType, Remarks, ToDateDayType, ToDate } = req.body;
 
         if (!employeecode || !Remarks || !firstName) {
             return res.status(400).send("Sender email and feedback are required");
@@ -49,6 +49,10 @@ const EmailPost = async (req, res) => {
           <td style="padding: 10px; border: 1px solid #333; font-weight: bold;">Last Name</td>
           <td style="padding: 10px; border: 1px solid #333;">${lastName}</td>
           </tr>
+           <tr style="background-color: #f8f9fa;">
+          <td style="padding: 10px; border: 1px solid #333; font-weight: bold;">Document No</td>
+          <td style="padding: 10px; border: 1px solid #333;">${docNo}</td>
+          </tr>
           <tr style="background-color: #f8f9fa;">
           <td style="padding: 10px; border: 1px solid #333; font-weight: bold;">Leave Type</td>
           <td style="padding: 10px; border: 1px solid #333;">${LeaveType}</td>
@@ -81,30 +85,80 @@ const EmailPost = async (req, res) => {
 };
 const ReplyEmail = async (req, res) => {
     try {
+        const { employeecode,ActionByEmail,docNo,actionType,Email,ActionByFirstName ,ActionByLastName,lastName,EmailNotificationTo, firstName, FromDate, FromDateDayType, LeaveType, Remarks, ToDateDayType, ToDate } = req.body;
+        var AdminEmail = EmailNotificationTo.replace("|", ",");
+      
         const transporter = nodemailer.createTransport({
             service: "gmail",
             port: 465,
             secure: true,
             auth: {
-                user: 'devpatel190703@gmail.com',
-                pass: 'kxcszpwbopestogz',
+                user: 'contact.hrmate@gmail.com',
+                pass: 'soecotvgcoexebyi',
             },
         });
-        const infos = await transporter.sendMail({
-            from: `"HRMate" <devpatel190703@gmail.com>`,
-            to: "devpatel190703@gmail.com",
-            subject: `Feedback by ${senderName}`,
-            text: `Dear HRMate Support,\n Date:${date}\n Name: ${senderName}\n Email:${senderEmail}\n Message:${senderFeedback}\n\nBest regards,\nAhmed Shaikh`
-            , html: `
-            <p>Dear User Sir,</p>
-            <p style='background-color:red'>Date :${formattedDate}</p>
-            <p>Name :${senderName}</p>
-            <p>Email :${senderEmail}</p>
-            <p>Message :${senderFeedback}</p><br>
-            <p>Best regards,<br>Ahmed Shaikh</p>
-        `,
+        const info = await transporter.sendMail({
+            from: `${ActionByFirstName} ${ActionByLastName} <contact.hrmate@gmail.com>`,
+            to: `${Email}`,
+            cc: `${AdminEmail}`,
+            subject: `🔔 Leave Request ${actionType === "Approve" ? "Approved ✅" : "Rejected ❌"}`,
+            html: `
+          <div style="font-family: Arial, sans-serif; max-width: 600px; margin: auto; border-radius: 8px; padding: 20px; background-color: #ffffff; border: 1px solid #ddd;">
+         <h2 style="color:${actionType === "Approve" ? "#28A745;" : "#DC3545;"}; text-align: center;">🚀 Leave Request ${actionType === "Approve" ? "Approved ✅" : "Rejected ❌"} </h2> <p style="font-size: 14px; color: #333;">Dear Admin,</p>
+          <p style="font-size: 14px; color: #333;">Your Leave Request is ${actionType}. Please find your details below:</p>
+           
+              <table style="width: 100%; border-collapse: collapse; margin-top: 15px; border: 1px solid #333;">
+          <tr style="background-color: #1E3A8A; color: #ffffff; font-weight: bold; text-align: left;">
+          <th style="padding: 12px; border: 1px solid #333;">Field</th>
+          <th style="padding: 12px; border: 1px solid #333;">Details</th>
+          </tr>
+          <tr style="background-color: #ffffff;">
+          <td style="padding: 10px; border: 1px solid #333; font-weight: bold;">Employee Code</td>
+          <td style="padding: 10px; border: 1px solid #333;">${employeecode}</td>
+          </tr>
+          <tr style="background-color: #f8f9fa;">
+          <td style="padding: 10px; border: 1px solid #333; font-weight: bold;">First Name</td>
+          <td style="padding: 10px; border: 1px solid #333;">${firstName}</td>
+          </tr>
+          <tr style="background-color: #ffffff;">
+          <td style="padding: 10px; border: 1px solid #333; font-weight: bold;">Last Name</td>
+          <td style="padding: 10px; border: 1px solid #333;">${lastName}</td>
+          </tr>
+           <tr style="background-color: #f8f9fa;">
+          <td style="padding: 10px; border: 1px solid #333; font-weight: bold;">Document No</td>
+          <td style="padding: 10px; border: 1px solid #333;">${docNo}</td>
+          </tr>
+          <tr style="background-color: #ffffff;">
+          <td style="padding: 10px; border: 1px solid #333; font-weight: bold;">Leave Type</td>
+          <td style="padding: 10px; border: 1px solid #333;">${LeaveType}</td>
+          </tr>
+          <tr style="background-color: #f8f9fa;">
+          <td style="padding: 10px; border: 1px solid #333; font-weight: bold;">From Date</td>
+          <td style="padding: 10px; border: 1px solid #333;">${FromDate} (${FromDateDayType})</td>
+          </tr>
+          <tr style="background-color: #ffffff;">
+          <td style="padding: 10px; border: 1px solid #333; font-weight: bold;">To Date</td>
+          <td style="padding: 10px; border: 1px solid #333;">${ToDate} (${ToDateDayType})</td>
+          </tr>
+          <tr style="background-color: #f8f9fa;">
+          <td style="padding: 10px; border: 1px solid #333; font-weight: bold;">Remarks</td>
+          <td style="padding: 10px; border: 1px solid #333;">${Remarks || "N/A"}</td>
+          </tr>
+            <tr style="background-color: #ffffff;">
+          <td style="padding: 10px; border: 1px solid #333; font-weight: bold;">Action By</td>
+          <td style="padding: 10px; border: 1px solid #333;">${ActionByFirstName} ${ActionByLastName}</td>
+          </tr>
+  <tr style="background-color: #f8f9fa;">
+          <td style="padding: 10px; border: 1px solid #333; font-weight: bold;">Actioner Email</td>
+          <td style="padding: 10px; border: 1px solid #333;">${ActionByEmail}</td>
+          </tr>
+          </table>
+              <p style="margin-top: 20px; font-size: 14px; color: #333;">Please review and take the necessary action.</p>
+          <p style="font-size: 14px; color: #333;">Best regards,<br><strong>HRMate System</strong></p>
+          </div>
+            `
         });
-        res.status(200).json({ Message: "Thank-you email successfully sent" });
+        res.status(200).json({ Message: "Successfully Reply to User " });
     } catch (error) {
         res.status(500).send("Failed to send thank-you email", error);
     }
