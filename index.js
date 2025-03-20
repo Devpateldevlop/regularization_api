@@ -18,8 +18,13 @@ mongoose.connect('mongodb+srv://pdev5771:rxHFzG2xPEkkocvM@cluster0.bso1d.mongodb
    
     app.use(cors({
         origin: '*', 
+        methods: ['GET', 'POST', 'PUT', 'DELETE' ,'OPTIONS'], 
+        allowedHeaders: ['Content-Type'], 
     }));
     
+    app.options('*', cors()); 
+    
+
 app.use(express.json({ limit: '45mb' }));
 app.use(express.urlencoded({ limit: '45mb', extended: true }));
 
