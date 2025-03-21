@@ -9,6 +9,7 @@ require("dotenv").config();
 const { getMethod, postMethod, putMethod, deleteMethod } = require('./srv/controller/MasterRegular');
 const { getMethodCertificate, postMethodCertificate, putMethodCertificate, deleteMethodCertificate } = require('./srv/controller/Cetificate');
 const { EmailPost, ReplyEmail } = require('./srv/controller/Email');
+const { getMethodTimeSheets, postMethodTimeSheets, putMethodTimeSheets, deleteMethodTimeSheets } = require('./srv/controller/TimeSheet');
 const app = express();
 mongoose.connect('mongodb+srv://pdev5771:rxHFzG2xPEkkocvM@cluster0.bso1d.mongodb.net/test')
     .then((db) =>{
@@ -46,6 +47,12 @@ app.get("/api/cetificate",getMethodCertificate);
 app.post("/api/cetificate",postMethodCertificate);
 app.put("/api/cetificate/:employeecode",putMethodCertificate);
 app.delete("/api/cetificate/:employeecode",deleteMethodCertificate);
+
+app.get("/api/TimesheetEntry/:employeecode",getMethodTimeSheets);
+app.get("/api/TimesheetEntry",getMethodTimeSheets);
+app.post("/api/TimesheetEntry",postMethodTimeSheets);
+app.put("/api/TimesheetEntry/:employeecode",putMethodTimeSheets);
+app.delete("/api/TimesheetEntry/:employeecode",deleteMethodTimeSheets);
 
 
 app.listen(PORT, () => {

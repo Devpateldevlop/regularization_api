@@ -8,11 +8,11 @@ Content-Type: application/json
 
 {
 "ActionByCode": 121,
-"ActionByEmail": "zaidbelim@daffodilsinfo.com",
-"ActionByFirstName": "Zaid",
-"ActionByLastName": "Belim",
-"Email": "devpatel@daffodilsinfo.com",
-"EmailNotificationTo": "devpatel@daffodilsinfo.com|zaidbelim@daffodilsinfo.com",
+"ActionByEmail": "rutvithoriya@daffodilsinfo.com",
+"ActionByFirstName": "Rutvi",
+"ActionByLastName": "Thoriya",
+"Email": "rutvithoriya@daffodilsinfo.com",
+"EmailNotificationTo": "devpatel@daffodilsinfo.com|rutvithoriya@daffodilsinfo.com|ahmedshaikh@daffodilsinfo.com",
 "FromDate": "2025-03-20",
 "FromDateDayType": "FullDay",
 "LeaveType": "Leave Without Pay",
