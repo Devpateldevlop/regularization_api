@@ -3,6 +3,7 @@ const { type } = require('os');
 
 const TimeSheet = new mongoose.Schema({
     date:{type:String},
+    employeecode:{type:String},
     startTime:{type:String},
     endTime:{type:String},
     totalHours:{type:String},
