@@ -8,7 +8,7 @@ const getMethodCertificate =async (req,res)=>{
         if(employeecode){
          getEmpData = await Certificates.find({"employeecode":employeecode});
          if(getEmpData.length === 0){
-             return res.status(404).json({error:"Certificate data is missing"});
+             return res.status(404).json({error:"No certificates have been uploaded yet"});
          }
         }else{
             getEmpData = await Certificates.find();
